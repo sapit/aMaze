@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Challenge for {{ mazeName }} {% endblock %}
+
+{% block body_block %}
+
+    <p> Name: {{ mazeName }} </p>
+
+    <br/>
+
+    <form role="form" method="post" action=".">
+            {% csrf_token %}
+            <!--{% for hidden in form.hidden_fields %}-->
+                <!--{{ hidden }}-->
+            <!--{% endfor %}-->
+
+        <input id="id_width" name="width" type="hidden" value ="{{ height }}"/>
+        <input id="id_height" name="height" type="hidden" value="{{ width }}" />
+        <input id="id_name" maxlength="128" name="name" type="hidden" value="{{ mazeName }}"/>
+        <input id="id_cells" name="cells" type="hidden" value="{{ maze }}"/>
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}<br/>
+                {{ field }}<br/>
+            {% endfor %}
+
+         <button type="submit" class="btn btn-default">Send the challenge</button>
+    </form>
+
+
+{% endblock %}

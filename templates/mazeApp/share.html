@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %} Share the mighty creation of {{ mazeName }} {% endblock %}
+
+{% block body_block %}
+
+    <p> {{ status }}</p> <br/>
+
+    <h3> Well done for creating sharing {{ mazeName }} </h3>
+
+    <p> An email to the people requested is already sent. If you want to share with more people use the following link: <br/></p>
+    <a href="{{ link }}"> {{ link }} </a>
+
+{% endblock %}
